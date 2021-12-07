@@ -1,0 +1,103 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+#gameScreen {
+  display: none;
+  flex-direction: row;
+  gap: 10em;
+  /* margin-top: 65px; */
+  /* border: solid black 1px; */
+}
+#statsBox {
+  width: 500px;
+  height: 500px;
+  border: solid black 1px;
+}
+.hitMsg {
+  /* margin-top: 50px; */
+  height: 30px;
+}
+#restartBtn {
+  display: none;
+  margin-bottom: 10px;
+}
+.grid {
+  /* border: solid black 1px; */
+  display: flex;
+}
+.column {
+  width: 35px;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
+}
+.cell {
+  height: 35px;
+  border: solid blue 1px;
+}
+.occupiedCell {
+  background-color: black;
+}
+.droppedCell {
+  background-color: slategray;
+}
+.unOccupiedCell {
+  background-color: white;
+}
+.proposedCell {
+  background-color: orange;
+}
+.hit {
+  background-color: red;
+}
+.miss {
+  background-color: rgb(98, 98, 153);
+}
+.boardLabel {
+  font-family: sans-serif;
+}
+#shuffleBtn {
+  display: none;
+  font-family: sans-serif;
+  font-weight: bold;
+  height: 50px;
+}
+#humanSetupGrid {
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.blink {
+  animation: blinker 0.6s linear infinite;
+  color: #1c87c9;
+  font-size: 30px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+.blink-one {
+  animation: blinker-one 1s linear infinite;
+}
+@keyframes blinker-one {
+  0% {
+    opacity: 0;
+  }
+}
+.blink-two {
+  animation: blinker-two 1.4s linear infinite;
+}
+@keyframes blinker-two {
+  100% {
+    opacity: 0;
+  }
+}

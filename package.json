@@ -1,0 +1,32 @@
+{
+  "name": "odin_javascript_7_battleship",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --mode=development"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.6",
+    "css-loader": "^6.3.0",
+    "jest": "^27.4.3",
+    "jest-chain": "^1.1.5",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.56.1",
+    "webpack-cli": "^4.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonro2955/odin_javascript_7_battleship.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonro2955/odin_javascript_7_battleship/issues"
+  },
+  "homepage": "https://github.com/jonro2955/odin_javascript_7_battleship#readme",
+  "description": ""
+}

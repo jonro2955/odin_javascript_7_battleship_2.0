@@ -1,0 +1,159 @@
+
+The function smartMove(board) finds an undestroyed ship on the board and hits 
+an adjacent end cell on it. A ship is any 'hit' cell that is either single or 
+connected by other hit cells in a straight line. We know if a ship is 
+destroyed if it has missed shots on both of its ends. 
+
+Everytime smartMove(board) is called, it finds connected or single 'hit' 
+moves on the board that have end openings and attacks those openings. 
+If this attack is a hit, the next time smartMove(board) is called, it 
+will take that hit into account and move accordingly. Once a ship is 
+destroyed, we mark those cells as destroyed so it no longer is relevant 
+for next iterations of this function.
+
+
+1) a) if there's no moves yet or b) if there's no hit move(s) in moves, 
+  return randomAttack(board). END
+ 
+2) Get the first hit move in moves that is not destroyed: bow'. 
+Push it into a special ship container called 'enemyShip'. 
+
+3) a)If bow has an adjacent hit cell 'stern', push it into enemyShip. 
+The directions to look for stern in depends on
+the location of bow:
+* If bow is a corner cell such as (0,0), there are 2 adjacent options:
+* E = (1, 0) and S = (0, 1).
+* If bow is an edge cell, there are 3 options.
+* If bow is any other cell, you have all 4 options: N, E, S, W.
+b) If bow has no adjacent hit cell, it's a single hit. 
+  return hitAdjacent(bow) (strikes an adjacent open cell of bow at random)* END
+ 
+4) At this point, enemyShip has 2 adjacent hit coords: bow and stern.
+Sort enemyShip depending on the orientation of its 2 current coords.
+Using a continuous loop, look to either ends of the 2 coordinates
+and if there are any hit cells, continuoulsy push them into enemyShip 
+(need directional operations to go in the correct 2 directions) until you 
+cannot find anymore or run into a wall. 
+
+5) Now enemyShip represents a strip cluster of red connected cells.
+If there no moves have been made at the ends of this ship, that is the 
+next move. 
+  Pick one end and hit it* END
+If there is no empty cell at either end of this ship, currentEnemyCoords 
+is destroyed. Mark these coordinates as 'destroyed' and 
+  return randomAttack(board). END
+
+*: Note we cannot hit an end/adjacent if it's beyond grid bounds. 
+
+
+
+  /*CURRENT: return coordinates for an open endcoord of enemyShip, if it
+  exists. Return value format: {x:1, y:0}*/
+  function getHitOption(enemyShip, moves, vertical) {
+    let returnVal;
+    const bow = enemyShip[0];
+    const stern = enemyShip[enemyShip.length - 1];
+    const bowX = bow['coord']['x'];
+    const bowY = bow['coord']['y'];
+    const sternX = stern['coord']['x'];
+    const sternY = stern['coord']['y'];
+    console.log('bow: ', bow['coord'], 'stern: ', stern['coord']);
+    if (vertical) {
+      /*Here are the vertical cases*/
+      //if bow is on top row, can only hit below stern
+      if (bowY == 0) {
+        //first set returnVal, then cancel it if it's been played already
+        returnVal = { x: sternX, y: sternY + 1 };
+        moves.forEach((move) => {
+          if (
+            move['coord']['x'] === sternX &&
+            move['coord']['y'] === sternY + 1
+          ) {
+            returnVal = false;
+          }
+        });
+      }
+      //if stern is on bottom row, can only hit above bow
+      if (sternY == 9) {
+        //first set returnVal, then cancel it if it's been played alread
+        returnVal = { x: bowX, y: bowY - 1 };
+        moves.forEach((move) => {
+          if (move['coord']['x'] === bowX && move['coord']['y'] === bowY - 1) {
+            returnVal = false;
+          }
+        });
+      } else {
+        //Here, both bow and stern are in the middle. Start with one side
+        returnVal = { x: bowX, y: bowY - 1 };
+        moves.forEach((move) => {
+          if (move['coord']['x'] === bowX && move['coord']['y'] === bowY - 1) {
+            returnVal = false;
+          }
+        });
+        //if that didn't work, try the other side
+        if (returnVal === false) {
+          returnVal = { x: sternX, y: sternY + 1 };
+          moves.forEach((move) => {
+            if (
+              move['coord']['x'] === sternX &&
+              move['coord']['y'] === sternY + 1
+            ) {
+              returnVal = false;
+            }
+          });
+        }
+      }
+    } else {
+      /*Here are the horizontal cases*/
+      //if bow is on left column, can only hit right of stern
+
+      if (bow['coord']['x'] == 0) {
+        //first set returnVal, then cancel it if it's been played already
+        returnVal = { x: sternX + 1, y: sternY };
+        moves.forEach((move) => {
+          if (
+            move['coord']['x'] === sternX + 1 &&
+            move['coord']['y'] === sternY
+          ) {
+            returnVal = false;
+          }
+        });
+      }
+      //if stern is on right column, can only hit left of bow
+      if (stern['coord']['x'] == 9) {
+        //first set returnVal, then cancel it if it's been played alread
+        returnVal = { x: bowX - 1, y: bowY };
+        moves.forEach((move) => {
+          if (move['coord']['x'] === bowX - 1 && move['coord']['y'] === bowY) {
+            returnVal = false;
+          }
+        });
+      } else {
+        //Here, both bow and stern are in the middle. Start with one side
+        returnVal = { x: bowX - 1, y: bowY };
+        moves.forEach((move) => {
+          if (move['coord']['x'] === bowX - 1 && move['coord']['y'] === bowY) {
+            returnVal = false;
+          }
+        });
+        //if that didn't work, try the other side
+        if (returnVal === false) {
+          returnVal = { x: sternX + 1, y: sternY };
+          moves.forEach((move) => {
+            if (
+              move['coord']['x'] === sternX + 1 &&
+              move['coord']['y'] === sternY
+            ) {
+              returnVal = false;
+            }
+          });
+        }
+      }
+    }
+    if (returnVal && (returnVal['x'] < 0 || returnVal['y'] < 0)) {
+      console.log('new getHitOption failsafe check working.', returnVal, ' converted to false.');
+      returnVal = false;
+    }
+    console.log('getHitOption returnVal: ', returnVal);
+    return returnVal;
+  }
