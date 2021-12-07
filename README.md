@@ -6,7 +6,7 @@ Now featuring:
 
 <hr/>
 
-[Live Demo](https://jonro2955.github.io/odin_javascript_7_battleship/)
+[Live Demo](https://jonro2955.github.io/odin_javascript_7_battleship_2.0/)
 
 ### Focus  
 - Unit tesing 
