@@ -9,7 +9,7 @@ body {
 #gameScreen {
   display: none;
   flex-direction: row;
-  gap: 10em;
+  gap: 1em;
   /* margin-top: 65px; */
   /* border: solid black 1px; */
 }
@@ -27,16 +27,16 @@ body {
   margin-bottom: 10px;
 }
 .grid {
-  /* border: solid black 1px; */
+  border: solid blue 1px;
   display: flex;
 }
 .column {
-  width: 35px;
+  width: 30px;
   display: grid;
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
 }
 .cell {
-  height: 35px;
+  height: 30px;
   border: solid blue 1px;
 }
 .occupiedCell {
