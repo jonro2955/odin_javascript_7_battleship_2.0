@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Battleship</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Battleship</h1>
+
+    <button id="restartBtn">Restart</button>
+    <button id="aiBtn">AI: On</button>
+
+    <h1 id="gameOverMsg" class="blink"></h1>
+
+    <div id="humanSetupGrid">
+      <div>Place your ships</div>
+    </div>
+
+    <div id="gameScreen">
+      <div>
+        <div class="boardLabel">Your Board</div>
+        <div id="humanBox"></div>
+        <h1 id="messageC" class="hitMsg"></h1>
+        <div id="computerSunkList" class="sunkList"></div>
+      </div>
+      <div>
+        <div class="boardLabel">Computer's Board</div>
+        <div id="computerBox"></div>
+        <h1 id="messageH" class="hitMsg"></h1>
+        <div id="humanSunkList" class="sunkList"></div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
