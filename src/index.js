@@ -41,7 +41,9 @@ function dragNDropModeStart() {
   aiBtn.style.display = 'none';
   gameOver = false;
   dom.clearAll();
+  human.reset();
   humanBoard.reset();
+  computer.reset();
   computerBoard.reset();
   computerBoard.shuffleAddShipsNoTouch();
   DragNDrop(humanBoard, activateGame);
@@ -105,4 +107,3 @@ function computerMove() {
 
 restartBtn.addEventListener('click', dragNDropModeStart);
 dragNDropModeStart();
-
