@@ -1,19 +1,37 @@
+Build Command:
+npm run build
+
+Git commit+push chain command:
+Put the following scripts in package.json's "scripts" object:
+"git": "git add . && git commit -m",
+"postgit": "git push –all",
+then run:
+npm run git -- '<YOUR COMMIT MESSAGE>'
+
+Chain all 3 above scripts together by modifying the git "script":
+"git": "npm run build && git add . && git commit -m",
+"postgit": "git push –all",
+then run:
+npm run git -- '<YOUR COMMIT MESSAGE>'
+
+
+AI Algorithm description:
 
 The function smartMove(board) finds an undestroyed ship on the board and hits 
 an adjacent end cell on it. A ship is any 'hit' cell that is either single or 
-connected by other hit cells in a straight line. We know if a ship is 
-destroyed if it has missed shots on both of its ends. 
+connected by other hit cells in a straight line. The way the program knows if a ship is 
+sunk is if there are missed shots on both ends of the ship. 
 
-Everytime smartMove(board) is called, it finds connected or single 'hit' 
-moves on the board that have end openings and attacks those openings. 
-If this attack is a hit, the next time smartMove(board) is called, it 
-will take that hit into account and move accordingly. Once a ship is 
-destroyed, we mark those cells as destroyed so it no longer is relevant 
-for next iterations of this function.
+Everytime smartMove(board) is called, the program finds an unsunk ship on 
+the board and attacks one of its end cell openings. Then it checks if it is sunk.
+Once a ship is sunk, we save its cell coordinates in an ignore list 
+so that it is no longer considered by future iterations of this function.
+Restarting the game empties the ignore list..
 
+AI Algorithm Steps:
 
-1) a) if there's no moves yet or b) if there's no hit move(s) in moves, 
-  return randomAttack(board). END
+1) if (a) there's no moves yet or (b) there's no hit moves in 'moves', then
+  execute randomAttack(board).
  
 2) Get the first hit move in moves that is not destroyed: bow'. 
 Push it into a special ship container called 'enemyShip'. 

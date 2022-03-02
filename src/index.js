@@ -74,7 +74,9 @@ function playerMove(e) {
       dom.announceGameOver('Player Wins! Game Over');
       restartBtn.style.display = 'initial';
     } else {
-      computerMove();
+      //insert timeout here
+      // computerMove();
+      setTimeout(computerMove, 1000);
     }
   }
 }

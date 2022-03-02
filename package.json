@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "build": "webpack --mode=development"
+    "build": "webpack --mode=development",
+    "git": "git add . && git commit -m",
+    "postgit": "git push –all"
   },
   "keywords": [],
   "author": "",

@@ -27,6 +27,9 @@ const gameBoard = (name) => {
     return container;
   }
 
+  /**This is needed to make the user place ships on the board so that they do 
+   * not touch each other. For the current ai algorithm to work, the ships cannot 
+   * touch.*/
   function makeSurroundingCellsUnavailable(coords) {
     coords.forEach((coord) => {
       let x = coord['x'];
@@ -140,6 +143,7 @@ const gameBoard = (name) => {
       }
     });
   }
+
   /**Random placement without touching:
    * Repeat the following 5 times for each ship in the fleet:
    * 1. Place a ship randomly until it fits.
