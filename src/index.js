@@ -76,7 +76,7 @@ function playerMove(e) {
     } else {
       //insert timeout here
       // computerMove();
-      setTimeout(computerMove, 1000);
+      setTimeout(computerMove, 200);
     }
   }
 }

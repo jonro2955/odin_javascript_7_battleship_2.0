@@ -6,7 +6,7 @@
     "test": "jest",
     "build": "webpack --mode=development",
     "git": "npm run build && git add . && git commit -m",
-    "postgit": "git push -all"
+    "postgit": "git push --all"
   },
   "keywords": [],
   "author": "",
