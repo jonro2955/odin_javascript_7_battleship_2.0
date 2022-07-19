@@ -8,7 +8,7 @@ Now featuring:
 
 [Live Demo](https://jonro2955.github.io/odin_javascript_7_battleship_2.0/)
 
-### Focus  
+### Focus Areas
 - Unit tesing 
 - Test First Development
 - Modular development
