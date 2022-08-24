@@ -8,7 +8,7 @@ The computer player could have been implemented as a random cell hitter, but I t
 
 Some challenges for this project were (1) Adopting the test-first development approach for the development of the basic objects of the application, (2) getting the drag-and-drop interface to work seamlessly, and (3) getting the AI to work the way I wanted it to given the constraints of the initial object design. Specifically, creating functions to determine whether a hit was an adjacent hit to another hit took a bit of creative tinkering. And if two ships are touching, the computer would think that a ship was longer than it really was, given the initial object design. So I found a workaround by preventing the ships from being placed if they are touching each other. 
 
-If I were to do this project over, I would redesign the objects differently with additional properties and methods so that the AI functions are easier to implement. I would also use functional programming to eliminate side effects and make the program easier to decypher rather than scrolling up and down to see which variable changes at each line. 
+If I were to do this project over, I would redesign the objects differently with additional properties and methods so that the AI functions are easier to implement. I would also use functional programming to eliminate side effects and make the program easier to decypher rather than scrolling up and down to see which variable changes at each line. Lastly, I would add responsive design for mobile viewports, and make the visual design of the game more aesthetic.
 
 <hr/>
 
